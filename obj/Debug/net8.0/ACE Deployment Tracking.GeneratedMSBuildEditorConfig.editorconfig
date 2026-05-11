@@ -38,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwbG95bWVudFBsYW5cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Swan/Projects/ACE Deployment Tracking/ACE Deployment Tracking/Pages/DeploymentPlan/DeploymentStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwbG95bWVudFBsYW5cRGVwbG95bWVudFN0YXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Swan/Projects/ACE Deployment Tracking/ACE Deployment Tracking/Pages/DeploymentPlan/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwbG95bWVudFBsYW5cRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

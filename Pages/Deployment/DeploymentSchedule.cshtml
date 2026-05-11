@@ -93,7 +93,12 @@
                         <tr>
                             <td>@item.SystemName</td>
                             <td>@(item.PlannedDate.HasValue ? item.PlannedDate.Value.ToString("yyyy-MM-dd") : "")</td>
-                            <td>@item.EstimatedHour @(item.EstimatedHour > 1 ? "Hours" : "Hour")</td>
+                            <td>
+                                @(item.Status == "Done" ? item.ActualHour : item.EstimatedHour)
+                                @((item.Status == "Done"
+                                    ? item.ActualHour
+                                    : item.EstimatedHour) > 1 ? "Hours" : "Hour")
+                            </td>
                             <td>@item.Status</td>
 
                             <td>
@@ -101,7 +106,7 @@
                                 {
                                     <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap">
 
-                                        <a asp-page="/Deployment/StartDeployment"
+                                        <a asp-page="/DeploymentPlan/DeploymentStart"
                                                asp-route-id="@item.Id"
                                                class="btn btn-primary">
                                             Start Deployment

@@ -32,5 +32,9 @@ namespace ACE_Deployment_Tracking.Models
         public TimeSpan? FromTime { get; set; }
 
         public TimeSpan? ToTime { get; set; }
+
+        public TimeSpan? ActualFromTime { get; set; }
+
+        public TimeSpan? ActualToTime { get; set; }
     }
 }

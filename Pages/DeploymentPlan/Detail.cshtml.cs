@@ -55,13 +55,13 @@ namespace ACE_Deployment_Tracking.Pages.DeploymentPlan
             Id = data.Id;
             SystemName = data.SystemName;
             DeploymentDate = data.PlannedDate;
-            EstimatedHour = data.EstimatedHour;
+            EstimatedHour = data.ActualHour;
             Month = data.Month;
             Type = data.Type;
             Remark = data.Remark;
             Status = data.Status;
-            FromTime = data.FromTime;
-            ToTime = data.ToTime;
+            FromTime = data.ActualFromTime;
+            ToTime = data.ActualToTime;
 
             return Page();
         }

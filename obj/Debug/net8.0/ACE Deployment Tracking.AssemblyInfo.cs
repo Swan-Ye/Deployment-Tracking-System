@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ACE Deployment Tracking")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a738e06e77109f3c29adf673471fefca2dbf58d3")]
 [assembly: System.Reflection.AssemblyProductAttribute("ACE Deployment Tracking")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ACE Deployment Tracking")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
