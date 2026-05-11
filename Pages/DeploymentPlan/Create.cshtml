@@ -1,0 +1,154 @@
+﻿@page
+@model ACE_Deployment_Tracking.Pages.DeploymentPlan.CreateModel
+@{
+    ViewData["Title"] = "Deployment Entry";
+}
+
+<div class="container mt-4">
+    <h5 class="fw-bold mb-3">Deployment Entry</h5>
+
+    <form method="post">
+        <div class="card shadow-sm border-0 rounded-4 p-4" style="max-width: 650px;">
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-3 col-form-label text-sm-center">System</label>
+                <div class="col-sm-5">
+                    <select class="form-select bg-light" asp-for="SystemName">
+                        <option value="">Select System</option>
+                        <option>ACE IS - Contract & Project Management System</option>
+                        <option>ACE IS - Integrated Accounting Systems</option>
+                        <option>ACE IS - Human Resource Management Systems</option>
+                        <option>Bitrix 24 CRM System</option>
+                        <option>Backlog System</option>
+                        <option>ACE Issue Tracking System</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-3 col-form-label text-sm-center">Date</label>
+                <div class="col-sm-5">
+                    <input type="date"
+                           class="form-control bg-light"
+                           id="deploymentDate"
+                           asp-for="DeploymentDate" />
+                </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-3 col-form-label text-sm-center">From Time</label>
+                <div class="col-sm-5">
+                    <input type="time"
+                           class="form-control bg-light"
+                           id="fromTime"
+                           asp-for="FromTime" />
+                </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-3 col-form-label text-sm-center">To Time</label>
+                <div class="col-sm-5">
+                    <input type="time"
+                           class="form-control bg-light"
+                           id="toTime"
+                           asp-for="ToTime" />
+                </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-3 col-form-label text-sm-center">Time Duration</label>
+                <div class="col-sm-5">
+                    <input type="text"
+                           class="form-control bg-light"
+                           id="timeDuration"
+                           asp-for="EstimatedHour"
+                           placeholder="HH"
+                           readonly />
+                </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-3 col-form-label text-sm-center">Month</label>
+                <div class="col-sm-5">
+                    <input type="text"
+                           class="form-control bg-light"
+                           id="monthField"
+                           asp-for="Month"
+                           readonly />
+                </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-3 col-form-label text-sm-center">Type</label>
+                <div class="col-sm-5">
+                    <select class="form-select bg-light" asp-for="Type">
+                        <option value="">Select Type</option>
+                        <option>Deployment</option>
+                        <option>Incident</option>
+                        <option>Maintenance</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label text-sm-center">Remark</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control bg-light" asp-for="Remark" rows="3" placeholder="Please enter your remark"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 ms-3">
+            <button type="submit" class="btn btn-success px-5 me-4">Save</button>
+            <a asp-page="/Deployment/DeploymentSchedule" class="btn btn-danger px-5">Cancel</a>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    <script>
+        const fromTime = document.getElementById('fromTime');
+        const toTime = document.getElementById('toTime');
+        const duration = document.getElementById('timeDuration');
+
+        const deploymentDate = document.getElementById('deploymentDate');
+        const monthField = document.getElementById('monthField');
+
+        function calculateDuration() {
+
+            if (fromTime.value && toTime.value) {
+
+                const from = new Date(`2000-01-01T${fromTime.value}`);
+                const to = new Date(`2000-01-01T${toTime.value}`);
+
+                let diff = (to - from) / 1000 / 60 / 60;
+
+                if (diff < 0) {
+                    diff += 24;
+                }
+
+                duration.value = parseFloat(diff).toFixed(2);
+            }
+        }
+
+        function updateMonth() {
+
+            if (deploymentDate.value) {
+
+                const date = new Date(deploymentDate.value);
+
+                const monthYear = date.toLocaleString('default', {
+                    month: 'long',
+                    year: 'numeric'
+                });
+
+                monthField.value = monthYear;
+            }
+        }
+
+        fromTime.addEventListener('change', calculateDuration);
+        toTime.addEventListener('change', calculateDuration);
+
+        deploymentDate.addEventListener('change', updateMonth);
+    </script>
+}

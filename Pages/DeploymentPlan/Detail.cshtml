@@ -1,0 +1,145 @@
+﻿@page "{id:int}"
+@model ACE_Deployment_Tracking.Pages.DeploymentPlan.DetailModel
+
+@{
+    ViewData["Title"] = "Deployment Detail";
+}
+
+<div class="container mt-4">
+
+    <h5 class="fw-bold mb-3">
+        Deployment Detail
+    </h5>
+
+    <div class="card shadow-sm border-0 rounded-4 p-4" style="max-width: 650px;">
+
+        <div class="row mb-3 align-items-center">
+            <label class="col-sm-3 col-form-label text-sm-center">
+                System
+            </label>
+
+            <div class="col-sm-5">
+                <input type="text"
+                       class="form-control bg-light"
+                       value="@Model.SystemName"
+                       readonly />
+            </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+            <label class="col-sm-3 col-form-label text-sm-center">
+                Date
+            </label>
+
+            <div class="col-sm-5">
+                <input type="text"
+                       class="form-control bg-light"
+                       value="@(Model.DeploymentDate?.ToString("yyyy-MM-dd"))"
+                       readonly />
+            </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+            <label class="col-sm-3 col-form-label text-sm-center">
+                From Time
+            </label>
+
+            <div class="col-sm-5">
+                <input type="time"
+                       class="form-control bg-light"
+                       value="@Model.FromTime"
+                       readonly />
+            </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+            <label class="col-sm-3 col-form-label text-sm-center">
+                To Time
+            </label>
+
+            <div class="col-sm-5">
+                <input type="time"
+                       class="form-control bg-light"
+                       value="@Model.ToTime"
+                       readonly />
+            </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+            <label class="col-sm-3 col-form-label text-sm-center">
+                Time Duration
+            </label>
+
+            <div class="col-sm-5">
+                <input type="text"
+                       class="form-control bg-light"
+                       value="@Model.EstimatedHour"
+                       readonly />
+            </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+            <label class="col-sm-3 col-form-label text-sm-center">
+                Month
+            </label>
+
+            <div class="col-sm-5">
+                <input type="text"
+                       class="form-control bg-light"
+                       value="@Model.Month"
+                       readonly />
+            </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+            <label class="col-sm-3 col-form-label text-sm-center">
+                Type
+            </label>
+
+            <div class="col-sm-5">
+                <input type="text"
+                       class="form-control bg-light"
+                       value="@Model.Type"
+                       readonly />
+            </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+            <label class="col-sm-3 col-form-label text-sm-center">
+                Remark
+            </label>
+
+            <div class="col-sm-6">
+                <textarea class="form-control bg-light"
+                          rows="3"
+                          readonly>@Model.Remark</textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+            <label class="col-sm-3 col-form-label text-sm-center">
+                Status
+            </label>
+
+            <div class="col-sm-5">
+                <input type="text"
+                       class="form-control bg-light"
+                       value="@Model.Status"
+                       readonly />
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-4 ms-3">
+
+        <a asp-page="/Deployment/DeploymentSchedule"
+               class="btn btn-secondary px-5">
+
+            Back
+
+        </a>
+
+    </div>
+
+</div>
