@@ -27,6 +27,12 @@ public class DeploymentScheduleModel : PageModel
     [BindProperty(SupportsGet = true)]
     public string? Status { get; set; }
 
+    [BindProperty(SupportsGet = true)]
+    public int CurrentPage { get; set; } = 1;
+
+    public int PageSize { get; set; } = 10;
+    public int TotalPages { get; set; }
+
     public List<string> SystemNames { get; set; } = new()
     {
         "ACE IS - Contract & Project Management System",
@@ -39,15 +45,16 @@ public class DeploymentScheduleModel : PageModel
 
     public async Task OnGetAsync()
     {
+        if (CurrentPage < 1)
+        {
+            CurrentPage = 1;
+        }
+
         var query = _context.DeploymentSchedules.AsQueryable();
+
         if (!string.IsNullOrEmpty(SystemName))
         {
             query = query.Where(x => x.SystemName == SystemName);
-        }
-
-        if (!string.IsNullOrEmpty(Status))
-        {
-            query = query.Where(x => x.Status == Status);
         }
 
         if (FromDate.HasValue)
@@ -60,8 +67,19 @@ public class DeploymentScheduleModel : PageModel
             query = query.Where(x => x.PlannedDate <= ToDate.Value);
         }
 
+        int totalRecords = await query.CountAsync();
+
+        TotalPages = (int)Math.Ceiling(totalRecords / (double)PageSize);
+
+        if (TotalPages > 0 && CurrentPage > TotalPages)
+        {
+            CurrentPage = TotalPages;
+        }
+
         DeploymentSchedules = await query
             .OrderByDescending(x => x.Id)
+            .Skip((CurrentPage - 1) * PageSize)
+            .Take(PageSize)
             .ToListAsync();
     }
 

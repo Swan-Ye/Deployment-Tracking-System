@@ -190,4 +190,49 @@
             </tbody>
         </table>
     </div>
+
+    @if (Model.TotalPages > 1)
+    {
+        <nav class="mt-4">
+            <ul class="pagination justify-content-center">
+
+                <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                    <a class="page-link"
+                           asp-page="/Deployment/DeploymentSchedule"
+                           asp-route-CurrentPage="@(Model.CurrentPage - 1)"
+                           asp-route-SystemName="@Model.SystemName"
+                           asp-route-FromDate="@Model.FromDate?.ToString("yyyy-MM-dd")"
+                           asp-route-ToDate="@Model.ToDate?.ToString("yyyy-MM-dd")">
+                        Previous
+                    </a>
+                </li>
+
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(Model.CurrentPage == i ? "active" : "")">
+                        <a class="page-link"
+                               asp-page="/Deployment/DeploymentSchedule"
+                               asp-route-CurrentPage="@i"
+                               asp-route-SystemName="@Model.SystemName"
+                               asp-route-FromDate="@Model.FromDate?.ToString("yyyy-MM-dd")"
+                               asp-route-ToDate="@Model.ToDate?.ToString("yyyy-MM-dd")">
+                            @i
+                        </a>
+                    </li>
+                }
+
+                <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                    <a class="page-link"
+                           asp-page="/Deployment/DeploymentSchedule"
+                           asp-route-CurrentPage="@(Model.CurrentPage + 1)"
+                           asp-route-SystemName="@Model.SystemName"
+                           asp-route-FromDate="@Model.FromDate?.ToString("yyyy-MM-dd")"
+                           asp-route-ToDate="@Model.ToDate?.ToString("yyyy-MM-dd")">
+                        Next
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    }
 </div>
