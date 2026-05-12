@@ -1,0 +1,101 @@
+﻿@page
+@model ReportModel
+
+<div class="container mt-4">
+    
+    <form method="get" class="row g-4 align-items-end mb-4">
+
+        <div class="col-md-4">
+            <label class="form-label fs-4">Filter With Month</label>
+            <input type="month"
+                   name="selectedMonth"
+                   value="@Model.SelectedMonth"
+                   class="form-control form-control-lg" />
+        </div>
+
+        <div class="col-md-3">
+            <button type="submit"
+                    class="btn btn-primary btn-lg w-100">
+                Search
+            </button>
+        </div>
+
+        <div class="col-md-3">
+            <a asp-page="/DeploymentPlan/Report"
+                   class="btn btn-secondary btn-lg w-100">
+                Reset
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a asp-page="/DeploymentPlan/Report"
+                   asp-page-handler="Export"
+                   asp-route-selectedMonth="@Model.SelectedMonth"
+                   class="btn btn-success btn-lg w-100">
+                Export
+            </a>
+        </div>
+       
+    </form>
+
+    <div class="table-responsive"
+         style="border: 3px solid #777; border-radius: 14px; overflow: hidden;">
+
+        <table class="table align-middle text-center mb-0"
+               style="border-collapse: separate; border-spacing: 0;">
+
+            <thead>
+                <tr style="background-color:#D5DBE3; height: 56px;">
+                    <th class="fw-normal">No</th>
+                    <th class="fw-normal">System Name</th>
+                    <th class="fw-normal">Total Hours in Month</th>
+                    <th class="fw-normal">Uptime Hours</th>
+                    <th class="fw-normal">Downtime Hours</th>
+                    <th class="fw-normal">Availability (%)</th>
+                    <th class="fw-normal">Note</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                    var systems = new List<string>
+                {
+                    "ACE IS - Contract & Project Management System",
+                    "ACE IS - Integrated Accounting Systems",
+                    "ACE IS - Human Resource Management Systems",
+                    "Bitrix 24 CRM System",
+                    "Backlog System",
+                    "ACE Issue Tracking System"
+                };
+
+                    int no = 1;
+                }
+
+                @foreach (var system in systems)
+                {
+                    var report = Model.Reports.FirstOrDefault(x => x.SystemName == system);
+
+                    var rowColor = no <= 3 ? "#E4F0DA" : "#DFE8F5";
+
+                    decimal totalHours = report?.TotalHours ?? Model.TotalMonthHours;
+                    decimal downtime = report?.DowntimeHour ?? 0;
+                    decimal uptime = report?.UptimeHour ?? Model.TotalMonthHours;
+                    decimal availability = report?.Availability ?? 100;
+
+                    <tr style="background-color:@rowColor; height: 68px;">
+                        <td>@no</td>
+                        <td style="max-width: 280px;">@system</td>
+                        <td>@totalHours</td>
+                        <td>@uptime</td>
+                        <td>@downtime</td>
+                        <td>@availability.ToString("0.00")%</td>
+                        <td>At 99%</td>
+                    </tr>
+                    no++;
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

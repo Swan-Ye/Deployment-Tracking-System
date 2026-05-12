@@ -153,3 +153,11 @@ D:\Swan\Projects\ACE Deployment Tracking\ACE Deployment Tracking\bin\Debug\net8.
 D:\Swan\Projects\ACE Deployment Tracking\ACE Deployment Tracking\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\Swan\Projects\ACE Deployment Tracking\ACE Deployment Tracking\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\Swan\Projects\ACE Deployment Tracking\ACE Deployment Tracking\obj\Debug\net8.0\ACE Deployment Tracking.sourcelink.json
+D:\Swan\Projects\ACE Deployment Tracking\ACE Deployment Tracking\bin\Debug\net8.0\ClosedXML.dll
+D:\Swan\Projects\ACE Deployment Tracking\ACE Deployment Tracking\bin\Debug\net8.0\ClosedXML.Parser.dll
+D:\Swan\Projects\ACE Deployment Tracking\ACE Deployment Tracking\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
+D:\Swan\Projects\ACE Deployment Tracking\ACE Deployment Tracking\bin\Debug\net8.0\DocumentFormat.OpenXml.Framework.dll
+D:\Swan\Projects\ACE Deployment Tracking\ACE Deployment Tracking\bin\Debug\net8.0\ExcelNumberFormat.dll
+D:\Swan\Projects\ACE Deployment Tracking\ACE Deployment Tracking\bin\Debug\net8.0\RBush.dll
+D:\Swan\Projects\ACE Deployment Tracking\ACE Deployment Tracking\bin\Debug\net8.0\SixLabors.Fonts.dll
+D:\Swan\Projects\ACE Deployment Tracking\ACE Deployment Tracking\bin\Debug\net8.0\System.IO.Packaging.dll

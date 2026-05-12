@@ -14,8 +14,8 @@ namespace ACE_Deployment_Tracking.Pages.DeploymentPlan
             _context = context;
         }
 
-        [BindProperty]
-        public DeploymentSchedule DeploymentSchedule { get; set; } = new();
+        //[BindProperty]
+        //public DeploymentSchedule DeploymentSchedule { get; set; } = new();
 
         [BindProperty]
         public int Id { get; set; }
