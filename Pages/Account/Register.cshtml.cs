@@ -25,7 +25,7 @@ namespace ACE_Deployment_Tracking.Pages.Account
             public string Email { get; set; } = null!;
 
             [Required]
-            [MinLength(6)]
+            [MinLength(8)]
             [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$",
             ErrorMessage = "Password must contain uppercase, lowercase, number and special character.")]
             public string Password { get; set; } = null!;
@@ -57,21 +57,7 @@ namespace ACE_Deployment_Tracking.Pages.Account
             _db.Users.Add(user);
             await _db.SaveChangesAsync();
 
-            await SignInUserAsync(user);
-
-            return RedirectToPage("/Index");
-        }
-
-        private async Task SignInUserAsync(User user)
-        {
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Email)
-            };
-            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var principal = new ClaimsPrincipal(identity);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            return RedirectToPage("/Account/Login");
         }
     }
 }
