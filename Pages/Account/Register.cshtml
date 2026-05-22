@@ -1,4 +1,4 @@
-@page
+﻿@page
 @model ACE_Deployment_Tracking.Pages.Account.RegisterModel
 @{
     ViewData["Title"] = "Register";
@@ -6,7 +6,7 @@
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="utf-8" />
     <title>Register</title>
@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
+
+    <button id="themeToggle" type="button" class="btn btn-outline-secondary btn-sm auth-theme-toggle">
+        🌙 Dark
+    </button>
 
     <div class="register-page">
         <div class="register-card">
@@ -71,6 +75,38 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
+
+    <script>
+        (function () {
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem("theme") || "light";
+            html.setAttribute("data-bs-theme", savedTheme);
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const themeToggle = document.getElementById("themeToggle");
+
+                function updateButtonText(theme) {
+                    if (themeToggle) {
+                        themeToggle.innerText = theme === "dark" ? "☀️ Light" : "🌙 Dark";
+                    }
+                }
+
+                updateButtonText(savedTheme);
+
+                if (themeToggle) {
+                    themeToggle.addEventListener("click", function () {
+                        const currentTheme = html.getAttribute("data-bs-theme") || "light";
+                        const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+                        html.setAttribute("data-bs-theme", newTheme);
+                        localStorage.setItem("theme", newTheme);
+                        updateButtonText(newTheme);
+                    });
+                }
+            });
+        })();
+    </script>
 
 </body>
 </html>

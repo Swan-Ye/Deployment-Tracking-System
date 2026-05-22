@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -257,3 +257,185 @@ body {
     font-weight: 600;
     text-decoration: underline;
 }
+
+/* Theme toggle button for standalone login/register pages */
+.auth-theme-toggle {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 1050;
+}
+
+/* Dark mode support for custom pages/components */
+[data-bs-theme="dark"] body {
+    background-color: #0f172a;
+    color: #e5e7eb;
+}
+
+[data-bs-theme="dark"] .login-page,
+[data-bs-theme="dark"] .register-page {
+    background: #0f172a;
+}
+
+[data-bs-theme="dark"] .login-card,
+[data-bs-theme="dark"] .register-card,
+[data-bs-theme="dark"] .schedule-card {
+    background: #111827;
+    color: #e5e7eb;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    border-color: #2563eb;
+}
+
+[data-bs-theme="dark"] .login-header h1,
+[data-bs-theme="dark"] .register-header h1,
+[data-bs-theme="dark"] .form-group label,
+[data-bs-theme="dark"] .password-rule {
+    color: #dbeafe;
+}
+
+[data-bs-theme="dark"] .login-header p,
+[data-bs-theme="dark"] .register-header p,
+[data-bs-theme="dark"] .register-link,
+[data-bs-theme="dark"] .login-link,
+[data-bs-theme="dark"] .footer {
+    color: #cbd5e1;
+}
+
+[data-bs-theme="dark"] .form-control {
+    background-color: #1f2937;
+    border-color: #475569;
+    color: #f8fafc;
+}
+
+[data-bs-theme="dark"] .form-control::placeholder {
+    color: #94a3b8;
+}
+
+[data-bs-theme="dark"] .password-rule {
+    background: #172554;
+    border-color: #1d4ed8;
+}
+
+[data-bs-theme="dark"] .schedule-table th,
+[data-bs-theme="dark"] .table-light {
+    background: #1f2937 !important;
+    color: #f8fafc !important;
+}
+
+[data-bs-theme="dark"] .schedule-table tbody tr:nth-child(odd) {
+    background: #111827;
+}
+
+[data-bs-theme="dark"] .schedule-table tbody tr:nth-child(even) {
+    background: #0f172a;
+}
+
+[data-bs-theme="dark"] .schedule-table,
+[data-bs-theme="dark"] .schedule-table th,
+[data-bs-theme="dark"] .schedule-table td {
+    color: #e5e7eb;
+    border-color: #334155;
+}
+
+[data-bs-theme="dark"] .navbar .navbar-brand,
+[data-bs-theme="dark"] .navbar .nav-link {
+    color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .navbar .nav-link:hover,
+[data-bs-theme="dark"] .navbar .navbar-brand:hover {
+    color: #dbeafe !important;
+}
+
+/* DARK MODE DROPDOWN */
+[data-bs-theme="dark"] .form-select {
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='white' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+/* INPUT */
+[data-bs-theme="dark"] .form-control {
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+}
+
+/* OPTION ITEMS */
+[data-bs-theme="dark"] option {
+    background-color: #1e293b;
+    color: white;
+}
+
+/* DARK MODE CARD / WHITE BOX */
+[data-bs-theme="dark"] .card,
+[data-bs-theme="dark"] .bg-white,
+[data-bs-theme="dark"] .container-box {
+    background-color: #111827 !important;
+    color: #ffffff !important;
+    border-color: #374151 !important;
+}
+
+/* DARK MODE LABEL */
+[data-bs-theme="dark"] label,
+[data-bs-theme="dark"] .form-label,
+[data-bs-theme="dark"] .col-form-label {
+    color: #e5e7eb !important;
+}
+
+/* DARK MODE INPUT / SELECT / TEXTAREA */
+[data-bs-theme="dark"] .form-control,
+[data-bs-theme="dark"] .form-select,
+[data-bs-theme="dark"] textarea {
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+}
+
+/* PLACEHOLDER */
+[data-bs-theme="dark"] .form-control::placeholder,
+[data-bs-theme="dark"] textarea::placeholder {
+    color: #93a4bd !important;
+}
+
+/* READONLY INPUT */
+[data-bs-theme="dark"] .form-control[readonly] {
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+}
+
+/* DATE / TIME ICON FIX */
+[data-bs-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator,
+[data-bs-theme="dark"] input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+/* DATE INPUT DARK MODE */
+[data-bs-theme="dark"] input[type="date"] {
+    background-color: #1e293b !important;
+    color: white !important;
+    border: 1px solid #475569 !important;
+    color-scheme: dark;
+}
+
+/* TIME INPUT DARK MODE */
+[data-bs-theme="dark"] input[type="time"] {
+    background-color: #1e293b !important;
+    color: white !important;
+    border: 1px solid #475569 !important;
+    color-scheme: dark;
+}
+
+/* MONTH INPUT DARK MODE */
+[data-bs-theme="dark"] input[type="month"] {
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+    color-scheme: dark;
+}
+
+    /* MONTH PICKER ICON */
+    [data-bs-theme="dark"] input[type="month"]::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }

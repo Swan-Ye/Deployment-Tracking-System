@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,9 +10,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-body-tertiary border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">ACE Deployment Tracking</a>
+                <a class="navbar-brand text-body" asp-area="" asp-page="/Index">ACE Deployment Tracking</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,15 +21,15 @@
 
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Deployment/DeploymentSchedule">Deployment Schedule</a>
+                            <a class="nav-link text-body" asp-area="" asp-page="/Deployment/DeploymentSchedule">Deployment Schedule</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/DeploymentPlan/Create">Deployment Plan</a>
+                            <a class="nav-link text-body" asp-area="" asp-page="/DeploymentPlan/Create">Deployment Plan</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/DeploymentPlan/Report">Report</a>
+                            <a class="nav-link text-body" asp-area="" asp-page="/DeploymentPlan/Report">Report</a>
                         </li>
                     </ul>
 
@@ -38,6 +38,10 @@
                         <span class="text-primary fw-semibold">
                             Hello, @User.Identity?.Name!
                         </span>
+
+                        <button id="themeToggle" type="button" class="btn btn-outline-secondary btn-sm px-3">
+                            🌙 Dark
+                        </button>
 
                         <a href="/Account/Logout" class="btn btn-outline-danger btn-sm px-3">
                             Logout
@@ -64,6 +68,37 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        (function () {
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem("theme") || "light";
+            html.setAttribute("data-bs-theme", savedTheme);
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const themeToggle = document.getElementById("themeToggle");
+
+                function updateButtonText(theme) {
+                    if (themeToggle) {
+                        themeToggle.innerText = theme === "dark" ? "☀️ Light" : "🌙 Dark";
+                    }
+                }
+
+                updateButtonText(savedTheme);
+
+                if (themeToggle) {
+                    themeToggle.addEventListener("click", function () {
+                        const currentTheme = html.getAttribute("data-bs-theme") || "light";
+                        const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+                        html.setAttribute("data-bs-theme", newTheme);
+                        localStorage.setItem("theme", newTheme);
+                        updateButtonText(newTheme);
+                    });
+                }
+            });
+        })();
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
